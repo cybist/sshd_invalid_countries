@@ -27,7 +27,7 @@ function sanitize($params, $is_textarea = false) {
     $is_arr = is_array($params);
     $is_arr or $params = (array)$params;
 
-    $dirts = $is_textarea ? array("\0") : array("\0", "\t", "\r\n");
+    $dirts = $is_textarea ? array("\0") : array("\0", "\t", "\r", "\n");
     array_walk_recursive($params, function(&$item) use ($dirts) {
         $item = str_replace($dirts, '', $item);
     });
